@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#7f1d1d">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Chrono Sessions">
+
+  <title>Chrono Sessions</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="top-bar">
+    <button onclick="startAll()">▶️ Start All</button>
+    <button onclick="resetAll()">🔄 Reset All</button>
+    <button onclick="stopAlarm()">🔕 Stop Alarm</button>
+  </div>
+  <div class="hero">
+    <div class="hero-badge">• DON DU SANG</div>
+    <h1>Chrono Sessions</h1>
+    <p class="hero-subtitle">
+      Gestion des temps de prélèvement — RAI LISS · RAI E.P · DSAI · TPHA · DU
+    </p>
+  </div>
+  <div class="grid">
+
+    <div class="card" id="card-rai-liss">
+      <div class="card-header">
+        <span class="session-name">RAI LISS</span>
+        <span class="badge badge-blue">15 min</span>
+      </div>
+      <hr class="session-line">
+      <div class="display" id="disp_rai_liss">15:00</div>
+      <div class="progress-info">
+        <span id="percent_rai_liss">100%</span>
+        <span>temps restant</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill blue" id="prog_rai_liss"></div>
+      </div>
+      <div class="btns">
+        <button onclick="startTimer('rai_liss')">▶ Start</button>
+        <button onclick="pauseTimer('rai_liss')">⏸ Pause</button>
+        <button onclick="resetTimer('rai_liss')">↺ Reset</button>
+      </div>
+      <div class="status" id="status-rai-liss"></div>
+    </div>
+
+    <div class="card" id="card-rai-ep">
+      <div class="card-header">
+        <span class="session-name">RAI E.P</span>
+        <span class="badge badge-green">45 min</span>
+      </div>
+      <hr class="session-line">
+      <div class="display" id="disp_rai_ep">45:00</div>
+      <div class="progress-info">
+        <span id="percent_rai_ep">100%</span>
+        <span>temps restant</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill green" id="prog_rai_ep"></div>
+      </div>
+      <div class="btns">
+        <button onclick="startTimer('rai_ep')">▶ Start</button>
+        <button onclick="pauseTimer('rai_ep')">⏸ Pause</button>
+        <button onclick="resetTimer('rai_ep')">↺ Reset</button>
+      </div>
+      <div class="status" id="status-rai-ep"></div>
+    </div>
+
+    <div class="card" id="card-dsai">
+      <div class="card-header">
+        <span class="session-name">DSAI</span>
+        <span class="badge badge-orange">45 min</span>
+      </div>
+      <hr class="session-line">
+      <div class="display" id="disp_dsai">45:00</div>
+      <div class="progress-info">
+        <span id="percent_dsai">100%</span>
+        <span>temps restant</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill orange" id="prog_dsai"></div>
+      </div>
+      <div class="btns">
+        <button onclick="startTimer('dsai')">▶ Start</button>
+        <button onclick="pauseTimer('dsai')">⏸ Pause</button>
+        <button onclick="resetTimer('dsai')">↺ Reset</button>
+      </div>
+      <div class="status" id="status-dsai"></div>
+    </div>
+
+    <div class="card" id="card-tpha">
+      <div class="card-header">
+        <span class="session-name">TPHA</span>
+        <span class="badge badge-red">45 min</span>
+      </div>
+      <hr class="session-line">
+      <div class="display" id="disp_tpha">45:00</div>
+      <div class="progress-info">
+        <span id="percent_tpha">100%</span>
+        <span>temps restant</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill red" id="prog_tpha"></div>
+      </div>
+      <div class="btns">
+        <button onclick="startTimer('tpha')">▶ Start</button>
+        <button onclick="pauseTimer('tpha')">⏸ Pause</button>
+        <button onclick="resetTimer('tpha')">↺ Reset</button>
+      </div>
+      <div class="status" id="status-tpha"></div>
+    </div>
+
+    <div class="card" id="card-du">
+      <div class="card-header">
+        <span class="session-name">DU</span>
+        <span class="badge badge-purple">15 min</span>
+      </div>
+      <hr class="session-line">
+      <div class="display" id="disp_du">15:00</div>
+      <div class="progress-info">
+        <span id="percent_du">100%</span>
+        <span>temps restant</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill purple" id="prog_du"></div>
+      </div>
+      <div class="btns">
+        <button onclick="startTimer('du')">▶ Start</button>
+        <button onclick="pauseTimer('du')">⏸ Pause</button>
+        <button onclick="resetTimer('du')">↺ Reset</button>
+      </div>
+      <div class="status" id="status-du"></div>
+    </div>
+
+<div class="card" id="card-custom">
+  <div class="card-header">
+    <span class="session-name">Chrono Libre</span>
+    <span class="badge badge-blue" id="badge-custom">— min</span>
+  </div>
+  <hr class="session-line">
+  <div class="display" id="disp_custom">00:00</div>
+  <div class="progress-info">
+    <span id="percent_custom">100%</span>
+    <span>temps restant</span>
+  </div>
+  <div class="progress-bar">
+    <div class="progress-fill blue" id="prog_custom"></div>
+  </div>
+  <div style="display:flex;gap:8px;width:100%;align-items:center;margin-top:4px;">
+    <input type="number" id="input_minutes" min="1" max="999" placeholder="Minutes"
+      style="flex:1;padding:8px 10px;border:1px solid #fca5a5;border-radius:10px;
+             font-size:14px;color:#7f1d1d;background:#fff8f8;outline:none;font-family:Arial,sans-serif;">
+    <button onclick="setCustomTimer()"
+      style="padding:9px 14px;border-radius:10px;border:none;background:#dc2626;
+             color:white;font-size:13px;cursor:pointer;font-family:Arial,sans-serif;">
+      ✓ Set
+    </button>
+  </div>
+  <div class="btns">
+    <button onclick="startTimer('custom')">▶ Start</button>
+    <button onclick="pauseTimer('custom')">⏸ Pause</button>
+    <button onclick="resetTimer('custom')">↺ Reset</button>
+  </div>
+  <div class="status" id="status-custom"></div>
+</div>
+
+  </div>
+
+  <footer class="footer">Chrono Sessions · Don du Sang</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
